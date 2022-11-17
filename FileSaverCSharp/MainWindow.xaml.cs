@@ -134,10 +134,11 @@ namespace FileSaverCSharp
                 if (reader.Read())
                 {
                     var extension = reader["Extension"].ToString();
-                    var name = System.IO.Path.Combine("C:\\Users\\ulise\\OneDrive\\Escritorio\\tests", reader["Name"].ToString() + extension);
+                    var path = "C:\\Users\\ulise\\OneDrive\\Escritorio\\tests";
+                    var fileName = reader["Name"].ToString();
                     var data = (byte[])reader["Data"];
-                    
-                    File.WriteAllBytes(name, data);
+
+                    FileUtils.SaveFile(path, fileName, extension, data);
                 }
             }
         }

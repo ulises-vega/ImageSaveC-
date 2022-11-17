@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace FileSaverCSharp
 {
@@ -19,6 +20,17 @@ namespace FileSaverCSharp
             }
 
             return buffer;
+        }
+
+        public static void SaveFile(string filePath, string fileName, string extension, byte[] buffer)
+        {
+            var path = System.IO.Path.Combine(filePath, fileName + extension);
+            SaveFile(path, buffer);
+        }
+
+        public static void SaveFile(string filePath, byte[] buffer)
+        {
+            File.WriteAllBytes(filePath, buffer);
         }
 
         public static string GetFileName(string filePath)
